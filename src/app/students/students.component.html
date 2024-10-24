@@ -1,0 +1,17 @@
+<p>{{tytul_listy}}</p>
+<ul>
+    @for (item of studenci; track $index) 
+    {
+        <li>{{item.imie}} {{item.nazwisko}}</li>
+        <li (click)="toggleAge(item)">Wiek: @if(item.showWiek){{{item.wiek}}}</li>
+        <li (click)="toggleGrade(item)">Ocena: @if(item.showOceny)
+            {
+            @for (grade of item.oceny; track $index)
+            {
+                <span [style]="{'color': grade <= 2 ? 'red' : 'black'}"> {{grade}}</span>
+            }
+        }
+        </li>
+        <br>
+    }
+</ul>
