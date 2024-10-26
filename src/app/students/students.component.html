@@ -1,20 +1,22 @@
 <div class="viewBox">
     <div class="firstColumn">
         <p>{{tytul_listy}}</p>
+        <h4>{{studenci.length}} {{studenci.length| i18nPlural:studentRules }}</h4>
+
         <ul>
             @for (item of studenci; track $index) 
             {
                 <div [class.selected]="$index===selected" (click)="select($index)">
-                <li>{{item.imie}} {{item.nazwisko}}</li>
-                <li (click)="toggleAge(item)">Wiek: @if(item.showWiek){{{item.wiek}}}</li>
-                <li (click)="toggleGrade(item)">Ocena: @if(item.showOceny)
-                    {
-                    @for (grade of item.oceny; track $index)
-                    {
-                        <span [style]="{'color': grade <= 2 ? 'red' : 'black'}"> {{grade}}</span>
-                    }
-                }
-                </li>
+                    <li>{{item.imie}} {{item.nazwisko}}</li>
+                    <li (click)="toggleAge(item)">Wiek: @if(item.showWiek){{{item.wiek}}}</li>
+                    <li (click)="toggleGrade(item)">Ocena: @if(item.showOceny)
+                        {
+                            @for (grade of item.oceny; track $index)
+                            {
+                                <span [style]="{'color': grade <= 2 ? 'red' : 'black'}"> {{grade}}</span>
+                            }
+                        }
+                    </li>
                 </div>
                 <br>
             }

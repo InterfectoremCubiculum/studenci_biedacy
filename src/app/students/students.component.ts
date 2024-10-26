@@ -1,19 +1,26 @@
   import { Component } from '@angular/core'; 
   import { AddStudentComponent } from "../add-student/add-student.component";
   import { EditStudentComponent } from '../edit-student/edit-student.component';
-  import { CountStudentsPipe } from '../count-students.pipe';
-
+  import { LOCALE_ID } from '@angular/core';
+  import { CommonModule } from '@angular/common';
   @Component({
     selector: 'app-students',
     standalone: true,
-    imports: [ CountStudentsPipe,AddStudentComponent, EditStudentComponent],
+    imports: [ CommonModule,AddStudentComponent, EditStudentComponent],
     templateUrl: './students.component.html',
-    styleUrl: './students.component.css'
+    styleUrl: './students.component.css',
+    providers: [{ provide: LOCALE_ID, useValue: 'pl' }]
+
   })
   
   export class StudentsComponent {
     tytul_listy: string = 'Lista wszystkich studentów';
     selected = -1;
+    studentRules: {[k: string]: string} = {
+      '=0': 'Studentów',
+      '=1': 'Student',
+      'other': 'Studentów',
+    };
     studenci: Student[] = [
       new Student('Adam', 'Małysz', 20, [3, 5, 2, 1]),
       new Student('Janusz', 'Kowalski', 18, [4, 3, 5, 6]),
