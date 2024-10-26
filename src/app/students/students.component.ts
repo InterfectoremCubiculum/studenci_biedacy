@@ -17,16 +17,16 @@
     tytul_listy: string = 'Lista wszystkich studentów';
     selected = -1;
     studentRules: {[k: string]: string} = {
-      '=0': 'Studentów',
-      '=1': 'Student',
-      'other': 'Studentów',
+      '=0': 'Brak studentów',
+      '=1': '1 Student',
+      'other': '# Studentów',
     };
     studenci: Student[] = [
-      new Student('Adam', 'Małysz', 20, [3, 5, 2, 1]),
-      new Student('Janusz', 'Kowalski', 18, [4, 3, 5, 6]),
-      new Student('Edward', 'Gierek', 21, [3, 4, 3, 3]),
-      new Student('Basia', 'Dasia', 22, [3, 2, 3, 4]),
-      new Student('Ania', 'Fajna', 19, [2, 5, 1, 2])
+      // new Student('Adam', 'Małysz', 20, [3, 5, 2, 1]),
+      // new Student('Janusz', 'Kowalski', 18, [4, 3, 5, 6]),
+      // new Student('Edward', 'Gierek', 21, [3, 4, 3, 3]),
+      // new Student('Basia', 'Dasia', 22, [3, 2, 3, 4]),
+      // new Student('Ania', 'Fajna', 19, [2, 5, 1, 2])
     ];
 
     toggleAge(student: Student): void {
