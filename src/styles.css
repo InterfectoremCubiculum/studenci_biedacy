@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+.viewBox {
+    display: flex;
+    justify-content: center;
+}
+.secondColumn{
+    margin-left: 8em;
+}
+.firstColumn{
+    margin-right: 8em;
+}
+.selected{
+    background-color: lightgoldenrodyellow;
+  }

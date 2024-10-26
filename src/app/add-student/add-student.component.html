@@ -1,9 +1,13 @@
-<form (submit)="onSubmit()">
-    <label for="name">Imie</label>
-    <input type="text" name="name" id="name" >
-    <label for="surname">Nazwisko</label>
-    <input type="text" name="surname" id="surname">
-    <label for="age">Wiek</label>
-    <input type="number" name="age" id="age">
-    <button type="submit">Stwórz Studenta</button>
+<form>
+    <h3>Dodaj studenta</h3>
+    <label for="name">Imie Studenta: </label>
+    <input id="name" [(ngModel)]="name" name="name"/><br>
+    
+    <label for="surname">Nazwisko Studenta: </label>
+    <input id="surname" [(ngModel)]="surname" name="surname"/><br>
+    
+    <label for="age">Wiek Studenta: </label>
+    <input id="age" [(ngModel)]="age" name="age" type="number"/><br>
+
+    <button (click)="onSubmit()">Save</button>
 </form>

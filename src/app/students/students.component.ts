@@ -1,15 +1,19 @@
   import { Component } from '@angular/core'; 
-  import { ValidateGradePipe } from '../validate-grade.pipe';
   import { AddStudentComponent } from "../add-student/add-student.component";
+  import { EditStudentComponent } from '../edit-student/edit-student.component';
+  import { CountStudentsPipe } from '../count-students.pipe';
+
   @Component({
     selector: 'app-students',
     standalone: true,
-    imports: [ValidateGradePipe, AddStudentComponent],
+    imports: [ CountStudentsPipe,AddStudentComponent, EditStudentComponent],
     templateUrl: './students.component.html',
     styleUrl: './students.component.css'
   })
+  
   export class StudentsComponent {
     tytul_listy: string = 'Lista wszystkich studentów';
+    selected = -1;
     studenci: Student[] = [
       new Student('Adam', 'Małysz', 20, [3, 5, 2, 1]),
       new Student('Janusz', 'Kowalski', 18, [4, 3, 5, 6]),
@@ -23,6 +27,27 @@
     }
     toggleGrade(student: Student): void {
       student.showOceny = !student.showOceny;
+    }
+    
+    onSaveStudent(student: { name: string; surname: string; age: number }) {
+      this.studenci.push(new Student(student.name, student.surname, student.age, []))
+    }
+    onEditStudent(student: { name: string; surname: string; age: number}) {
+      if (this.selected != -1) {
+        let tempStudent : Student  = this.studenci[this.selected]
+        tempStudent.imie = student.name;
+        tempStudent.nazwisko = student.surname;
+        tempStudent.wiek = student.age;
+      }
+    }
+    addGrade($event: { grade: number; }){ 
+    if(this.selected!== -1)
+      {      
+          this.studenci[this.selected].dodajOcena($event.grade)
+      }
+    }
+    select(which:number):void{
+      this.selected=which;
     }
   }
   export class Student {
@@ -73,4 +98,5 @@
     public dodajOcena(ocena: number){
       this._oceny.push(ocena);
     }
-  }
+
+}

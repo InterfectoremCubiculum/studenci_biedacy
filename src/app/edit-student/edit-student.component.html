@@ -1,1 +1,16 @@
-<p>edit-student works!</p>
+<form>
+    <h3>Edytuj Studenta</h3>
+    <label for="name">Imie Studenta: </label>
+    <input id="name" [(ngModel)]="name" name="name"/><br>
+    
+    <label for="surname">Nazwisko Studenta: </label>
+    <input id="surname" [(ngModel)]="surname" name="surname"/><br>
+    
+    <label for="age">Wiek Studenta: </label>
+    <input id="age" [(ngModel)]="age" name="age" type="number"/><br>
+
+    <label for="grades">Nowa ocena: </label>
+    <input id="grades" [(ngModel)]="grade" name="grades" type="number"/><br>
+    <button (click)="onSubmit()">Save</button>
+    <button (click)="addGrade()">Dodaj Ocene</button>
+</form>
